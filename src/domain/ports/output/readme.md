@@ -1,0 +1,1 @@
+aqui adicionar a interface que aglomeraria todos os metodos de execução, a serem importados futuramento!

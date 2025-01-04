@@ -1,0 +1,1 @@
+aqui virá as nossas regras de negócio, seprarado por responsabilidades, no caso criação, edição, remoção e listagem

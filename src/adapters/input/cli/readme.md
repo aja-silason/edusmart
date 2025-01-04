@@ -1,0 +1,1 @@
+para o caso de usar um terminal

@@ -5,48 +5,28 @@ import { CreateUserUsecase } from "./domain/use-case/user/create.usecase";
 import dotenv  from "dotenv";
 import { ListUserUsecase } from "./domain/use-case/user/list.usecase";
 import { ListUserController } from "./adapters/input/server/express/routes/user/listController";
+import { ListOneUserController } from "./adapters/input/server/express/routes/user/listOneController";
+import { ListOneUserUsecase } from "./domain/use-case/user/listOne.usecase";
 
 
 function main(){
     
     dotenv.config();
 
-    type User = {
-        username: string,
-        email: string,
-        password: string
-    }
-
-    // const user = [{
-    //     username: "Ananias Jaime Augusto",
-    //     email: "ananiasjaimeaugusto@gmail.com",
-    //     password: "aja122up"
-    // },
-    // {
-    //     username: "Ananias Jaime Augusto",
-    //     email: "ananiasjaimeaugusto@gmail.com",
-    //     password: "aja122up"
-    // },
-    // {
-    //     username: "Ananias Jaime Augusto",
-    //     email: "ananiasjaimeaugusto@gmail.com",
-    //     password: "aja122up"
-    // }]
-
     const user = "a";
 
-    
     const aUserRepository = UserRepository.create(user);
+
     const aUser = CreateUserUsecase.create(aUserRepository);
     const listUser = ListUserUsecase.create(aUserRepository);
+    const listOneUser = ListOneUserUsecase.create(aUserRepository);
     
     const userRoute = CreateUserController.create(aUser);
     const listUserRoute = ListUserController.create(listUser);
-
-    console.log("User create = ", aUser);
+    const listOneUserRoute = ListOneUserController.create(listOneUser);
     
     const port = 3033;
-    const api = ApiExpress.create([userRoute, listUserRoute]);
+    const api = ApiExpress.create([userRoute, listUserRoute, listOneUserRoute]);
 
     api.start(port);
     

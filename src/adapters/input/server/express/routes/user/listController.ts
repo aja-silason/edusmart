@@ -3,11 +3,9 @@ import { ListUserOutputDTO, ListUserUsecase } from "../../../../../../domain/use
 import { HttpMethod, IRoutes } from "../IRoutes";
 
 export type ListUserControllerResponseDTO = {
-    // user: {
-        id: string,
-        username: string,
-        email: string,
-    // }[]
+    id: string,
+    username: string,
+    email: string,
 }[]
 
 export class ListUserController implements IRoutes{
@@ -45,23 +43,11 @@ export class ListUserController implements IRoutes{
     }
 
     public present(input: ListUserOutputDTO): ListUserControllerResponseDTO{
-        // const response: ListUserControllerResponseDTO = {
-        //     user: input.user.map((users) => ({
-        //         id: users.id,
-        //         username: users.username,
-        //         email: users.email,
-        //     }))
-
-        // };
-
         const response = input.user.map((users) => ({
             id: users.id,
             username: users.username,
             email: users.email,
         }))
-
-
-
         return response
     }
 

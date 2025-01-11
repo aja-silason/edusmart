@@ -2,7 +2,7 @@ export type UserProps = {
     id: string;
     username: string;
     email: string;
-    password: string;
+    password?: string;
 }
 
 export class User {
@@ -19,7 +19,11 @@ export class User {
     }
 
     public static with(props: UserProps){
-        return new User(props);
+        return new User({
+            id: props.id,
+            username: props.username,
+            email: props.email,
+        });
     }
 
     public get id(){

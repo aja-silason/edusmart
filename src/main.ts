@@ -2,12 +2,12 @@ import { ApiExpress } from "./adapters/input/server/express/ApiExpress";
 import { CreateUserController } from "./adapters/input/server/express/routes/user/createController";
 import { UserRepository } from "./adapters/output/repository/user.repository";
 import { CreateUserUsecase } from "./domain/use-case/user/create.usecase";
-// import dotenv  from "dotenv";
+import dotenv  from "dotenv";
 
 
 function main(){
     
-    // dotenv.config();
+    dotenv.config();
 
     type User = {
         username: string,
@@ -38,9 +38,8 @@ function main(){
     const userRoute = CreateUserController.create(aUser);
 
     console.log("User create = ", aUser);
-
+    
     const port = process.env.PORT || 3033;
-
     const api = ApiExpress.create([userRoute]);
 
     api.start(port);

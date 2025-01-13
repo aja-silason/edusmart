@@ -33,7 +33,7 @@ export class CreateUserController implements IRoutes {
                 const isValidate: Array<keyof InputUserDTO> = ["username", "email", "password"];
                 for(const key of isValidate){
                     if(payload[key] == "" || payload[key] == undefined || payload[key] == null){
-                        throw new Error("Something went wrong, we are fixing for you");
+                        res.status(422).json({message: `${key} must be a fill`}).send();
                     }
                 }
 
